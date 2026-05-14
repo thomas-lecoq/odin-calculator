@@ -1,11 +1,9 @@
 // logic related to keyboard management
 
-import { CALCULATOR_CTNR_ID } from "./config.js";
+import { CALCULATOR_CNTR, SAMPLE_LIBRARY } from "./config.js";
 
-function getTypedKeyValue() {
-    const calculatorCtnr = document.querySelector(`#${CALCULATOR_CTNR_ID}`);
-    
-    calculatorCtnr.addEventListener('click', (e) => {
+function getTypedKeyValue() {  
+    CALCULATOR_CNTR.addEventListener('click', (e) => {
         if (e.target.tagName !== "BUTTON") return;
         const typedKeyValue = e.target.dataset.value;
         console.log(typedKeyValue);
@@ -13,4 +11,18 @@ function getTypedKeyValue() {
     });
 }
 
-export { getTypedKeyValue };
+function playSound(sampleKey) {
+    const sampleReference = SAMPLE_LIBRARY[sampleKey];
+    const sound = sampleReference.sound;
+    sound.currentTime = sampleReference.startingPoint;
+    sound.play();
+}
+
+function playKeypressFeedback() {
+    CALCULATOR_CNTR.addEventListener('click', (e) => {
+        if (e.target.tagName !== "BUTTON") return
+        playSound("click");
+    });
+}
+
+export { getTypedKeyValue, playKeypressFeedback};
