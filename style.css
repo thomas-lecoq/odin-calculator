@@ -1,5 +1,126 @@
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap');
+
+/* rules reset */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* tags */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom left, #C9C7AF, rgba(255, 254, 183, 0.884), #EEF1DB, #485B63);
+}
+
+button {
+    flex: 1;
+    margin: 1px;
+    border-radius: 10px;
+    border: 1px solid black;
+    color: white;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+/* ids */
+#calculator-ctnr {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    width: 450px;
+    background-color: rgb(199, 198, 198);
+    border: 5px solid rgb(192, 144, 72);
+    border-radius: 2em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#screen-ctnr {
+    flex:1;
+    margin: 7%;
+    margin-bottom: 3%;
+    border: 1px solid black;
+    background-color: rgb(78, 77, 77);
+    border-radius: 8px;
+}
+
+#keyboard-ctnr {
+    flex: 4;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    margin: 7%;
+    margin-top: 0%;
+}
+
+#left-keys-ctnr {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#zero-btn {
+    flex: 2;
+}
+
+#equal-btn {
+    flex: 1;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 16px;
+}
+
+#screen-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    font-family: "Rubik Iso", system-ui;
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(233, 180, 100);
+}
+
+/* shape class */
+.row {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.row-bottom {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.symetric-row {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.asymetric-row {
+    flex: 1;
+    display: flex;
+}
+
+
+/* colors class */
+.darkgrey {
+    background-color: rgb(80, 80, 80);
+}
+
+.lightgrey {
+    background-color: rgb(161, 161, 161);
 }

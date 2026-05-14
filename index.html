@@ -4,10 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script defer type="module" src=".js/main.js"></script>
+    <script defer type="module" src="js/main.js"></script>
     <title>Calculator</title>
 </head>
 <body>
-    
+    <div id="calculator-ctnr">
+        <div id="screen-ctnr">
+            <div id="screen-header">
+                <p>Odin-calc</p>
+                <p>Retrocalculator</p>
+            </div>
+            <div id="screen-display">
+            </div>
+        </div>
+
+        <div id="keyboard-ctnr">
+            <div id="left-keys-ctnr">
+                <div class="row">
+                    <button id="clear-btn" class="lightgrey">C</button>
+                    <button id="divide-btn" class="lightgrey">÷</button>
+                    <button id="multiply-btn" class="lightgrey">X</button>
+                    <button id="correct-btn" class="lightgrey">←</button>
+                </div>
+                <div class="row">
+                    <button id="seven-btn" class="darkgrey">7</button>
+                    <button id="eight-btn" class="darkgrey">8</button>
+                    <button id="nine-btn" class="darkgrey">9</button>
+                    <button id="substract-btn" class="lightgrey">-</button>
+                </div>
+                <div class="row">
+                    <button id="four-btn" class="darkgrey">4</button>
+                    <button id="five-btn" class="darkgrey">5</button>
+                    <button id="six-btn" class="darkgrey">6</button>
+                    <button id="add-btn" class="lightgrey">+</button>
+                </div>
+                <div class="row-bottom">
+                    <div class="symetric-row">
+                        <div class="row">
+                            <button id="one-btn" class="darkgrey">1</button>
+                            <button id="two-btn" class="darkgrey">2</button>
+                            <button id="three-btn" class="darkgrey">3</button>
+                        </div>
+                        <div class="row">
+                            <button id="zero-btn" class="darkgrey">0</button>
+                            <button id="dot-btn" class="darkgrey">.</button>
+                        </div>
+                    </div>
+                    <div class="asymetric-row">
+                        <button id="equal-btn" class="lightgrey">ENTER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
