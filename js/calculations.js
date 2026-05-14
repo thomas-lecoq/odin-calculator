@@ -14,4 +14,8 @@ function divide(a, b) {
     return a / b
 }
 
-export { add, substract, multiply, divide };
+function operate(operatorFunc, a, b) {
+    return operatorFunc(a, b)
+}
+
+export { add, substract, multiply, divide, operate};
