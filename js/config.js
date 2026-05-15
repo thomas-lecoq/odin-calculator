@@ -6,6 +6,7 @@ const SCREEN_DISPLAY_ID = "screen-display";
 
 // html elements
 const CALCULATOR_CNTR = document.querySelector(`#${CALCULATOR_CTNR_ID}`);
+const DISPLAY_TEXT = document.querySelector(`#${SCREEN_DISPLAY_ID} p`);
 
 // sounds
 const SAMPLE_LIBRARY = {
@@ -26,4 +27,4 @@ const INITIAL_STATE = {
     "displayedText": "0",
 };
 
-export { CALCULATOR_CNTR, SCREEN_DISPLAY_ID, SAMPLE_LIBRARY, INITIAL_STATE};
+export { CALCULATOR_CNTR, DISPLAY_TEXT, SAMPLE_LIBRARY, INITIAL_STATE};
