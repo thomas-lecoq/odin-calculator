@@ -20,6 +20,10 @@ const SAMPLE_LIBRARY = {
     },
 };
 
+// arrays
+const DIGITS = Array.from({ length: 10 }, (_, i) => String(i));
+
+// calculation state
 const INITIAL_STATE = {
     "previousValue": null,
     "currentInput": null,
