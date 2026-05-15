@@ -1,3 +1,5 @@
+// logic related to mathematical functions
+
 function add(a, b) {
     return a + b
 }
