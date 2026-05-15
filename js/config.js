@@ -25,4 +25,4 @@ const INITIAL_STATE = {
     "displayedText": "0",
 };
 
-export { CALCULATOR_CNTR, SAMPLE_LIBRARY };
+export { CALCULATOR_CNTR, SAMPLE_LIBRARY, INITIAL_STATE};
