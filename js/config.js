@@ -22,6 +22,7 @@ const SAMPLE_LIBRARY = {
 
 // arrays
 const DIGITS = Array.from({ length: 10 }, (_, i) => String(i));
+const OPERATORS = ["add", "substract", "multiply", "divide"];
 
 // calculation state
 const INITIAL_STATE = {
@@ -31,4 +32,4 @@ const INITIAL_STATE = {
     "displayedText": "0",
 };
 
-export { CALCULATOR_CNTR, DISPLAY_TEXT, SAMPLE_LIBRARY, INITIAL_STATE};
+export { CALCULATOR_CNTR, DISPLAY_TEXT, SAMPLE_LIBRARY, DIGITS, INITIAL_STATE};
