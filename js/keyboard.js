@@ -2,15 +2,6 @@
 
 import { CALCULATOR_CNTR, SAMPLE_LIBRARY } from "./config.js";
 
-function getTypedKeyValue() {  
-    CALCULATOR_CNTR.addEventListener('click', (e) => {
-        if (e.target.tagName !== "BUTTON") return;
-        const typedKeyValue = e.target.dataset.value;
-        console.log(typedKeyValue);
-        return typedKeyValue
-    });
-}
-
 function playSound(sampleKey) {
     const sampleReference = SAMPLE_LIBRARY[sampleKey];
     const sound = sampleReference.sound;
@@ -18,11 +9,12 @@ function playSound(sampleKey) {
     sound.play();
 }
 
-function playKeypressFeedback() {
-    CALCULATOR_CNTR.addEventListener('click', (e) => {
-        if (e.target.tagName !== "BUTTON") return
-        playSound("click");
-    });
+function handleKeyPress(event) {
+    if (event.target.tagName !== "BUTTON") return;
+    const typedKeyValue = event.target.dataset.value;
+
+    playSound("click");
+    console.log(typedKeyValue);
 }
 
-export { getTypedKeyValue, playKeypressFeedback};
+export { handleKeyPress };

@@ -1,9 +1,8 @@
-import { add, substract, multiply, divide, operate } from './calculations.js';
-import { getTypedKeyValue, playKeypressFeedback } from './keyboard.js';
+import { CALCULATOR_CNTR } from './config.js';
+import { handleKeyPress } from './keyboard.js';
 
-let firstNumber;
-let secondNumber;
-let operator;
+function init() {
+    CALCULATOR_CNTR.addEventListener('click', handleKeyPress);
+}
 
-getTypedKeyValue();
-playKeypressFeedback();
+init();
