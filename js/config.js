@@ -10,7 +10,11 @@ const CALCULATOR_CNTR = document.querySelector(`#${CALCULATOR_CTNR_ID}`);
 const SAMPLE_LIBRARY = {
     "click": {
         "sound": new Audio("sounds/click.mp3"), 
-        "startingPoint": 0.07
+        "startingPoint": 0.07,
+    },
+    "kaching": {
+        "sound": new Audio("sounds/kaching.mp3"),
+        "startingPoint": 0,
     },
 }
 

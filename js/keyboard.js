@@ -13,7 +13,13 @@ function handleKeyPress(event) {
     if (event.target.tagName !== "BUTTON") return;
     const typedKeyValue = event.target.dataset.value;
 
-    playSound("click");
+    switch(event.target.id) {
+        case ("equal-btn"):
+            playSound("kaching");
+            break;
+        default:
+            playSound("click");
+    };
     console.log(typedKeyValue);
 }
 
