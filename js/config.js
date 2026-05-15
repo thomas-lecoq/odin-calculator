@@ -2,6 +2,7 @@
 
 // ids name
 const CALCULATOR_CTNR_ID = "calculator-ctnr";
+const SCREEN_DISPLAY_ID = "screen-display";
 
 // html elements
 const CALCULATOR_CNTR = document.querySelector(`#${CALCULATOR_CTNR_ID}`);
@@ -25,4 +26,4 @@ const INITIAL_STATE = {
     "displayedText": "0",
 };
 
-export { CALCULATOR_CNTR, SAMPLE_LIBRARY, INITIAL_STATE};
+export { CALCULATOR_CNTR, SCREEN_DISPLAY_ID, SAMPLE_LIBRARY, INITIAL_STATE};
