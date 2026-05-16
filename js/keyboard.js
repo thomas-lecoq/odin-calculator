@@ -1,7 +1,7 @@
 // logic related to keyboard management
 
 import { CALCULATOR_CNTR, SAMPLE_LIBRARY, DIGITS, OPERATORS } from "./config.js";
-import { setCurrentEntry, correctCurrentEntry, reset, setOperator, equal, tryToCalculate} from "./state.js";
+import { setCurrentEntry, correctCurrentEntry, reset, setOperator, forceOperationResolution, tryToCalculate} from "./state.js";
 import { updateDisplay } from "./display.js";
 
 function playSound(sampleKey) {
@@ -33,7 +33,7 @@ function handleKeyPress(event) {
             setOperator(typedKeyValue);
             break;
         case (typedKeyValue === "equal"):
-            equal();
+            forceOperationResolution();
             break;
         case (typedKeyValue === "correct"):
             correctCurrentEntry();

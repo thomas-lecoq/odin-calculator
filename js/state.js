@@ -82,7 +82,7 @@ function resolvePendingOperation() {
     setOperation();
 }
 
-function equal() {
+function forceOperationResolution() {
     // shift current entry so the three slots (firstMember, operator, secondMember) are ready for tryToCalculate
     if (state.currentEntry.value === null) return;
     if (state.firstMember.value === null || state.operator.value === null) return;
@@ -132,7 +132,7 @@ export {
     setCurrentEntry, 
     correctCurrentEntry, 
     setOperator, 
-    equal, 
+    forceOperationResolution, 
     tryToCalculate, 
     getOperationText, 
     reset 
