@@ -41,10 +41,10 @@ function setStateSlot(slotName, slotValue) {
  */
 function setCurrentEntry(typedKeyValue) {
     const typedKeyText = String(typedKeyValue);
+    // after `=`, firstMember holds the result with no operator: start a new calculation
+    if (state.firstMember.value !== null && state.operator.value === null) reset();
     // prevent multiple decimal points in the same number
-    if ((typedKeyText === '.' && 
-        (state.currentEntry.text.includes('.') || state.firstMember.text.includes('.'))
-    )) return;
+    if (typedKeyText === '.' && state.currentEntry.text.includes('.')) return;
 
     const currentEntryText = state.currentEntry.text.concat(typedKeyText);
     setStateSlot("currentEntry", currentEntryText);
