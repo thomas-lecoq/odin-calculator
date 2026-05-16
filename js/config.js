@@ -23,6 +23,7 @@ const SAMPLE_LIBRARY = {
 
 // arrays
 const DIGITS = Array.from({ length: 10 }, (_, i) => String(i));
+DIGITS.push('.');
 
 // Object
 const OPERATORS = {
