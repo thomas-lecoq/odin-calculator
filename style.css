@@ -42,7 +42,7 @@ button {
 }
 
 #screen-ctnr {
-    flex:1;
+    flex:1.25;
     margin: 7%;
     margin-bottom: 3%;
     border: 1px solid black;
