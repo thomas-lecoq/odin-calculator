@@ -26,11 +26,10 @@ function setStateSlot(slotName, slotValue) {
 
 function setCurrentEntry(typedKeyValue) {
     const typedKeyText = String(typedKeyValue);
-    const currentEntryValue = state.currentEntry.value;
+    // prevent multiple decimal points in the same number
+    if (typedKeyText === '.' && state.currentEntry.text.includes('.')) return;
 
-    const currentEntryText = (
-        (currentEntryValue === null) ? typedKeyText : String(currentEntryValue).concat(typedKeyText)
-    );
+    const currentEntryText = state.currentEntry.text.concat(typedKeyText);
     setStateSlot("currentEntry", currentEntryText);
     setOperation();
 }
