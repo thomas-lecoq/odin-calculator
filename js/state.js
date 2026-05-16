@@ -90,6 +90,9 @@ function forceOperationResolution() {
 }
 
 function tryToCalculate() {
+    const isInfinity = (state.firstMember.value === Infinity);
+    // if any calculation is tried base on infinity value: reset
+    if (isInfinity) reset();
     // if all members and the operator is set, compute intermediate result and update member
     if (state.firstMember.value !== null && state.secondMember.value !== null && state.operator.value !== null){
         resolvePendingOperation();
@@ -124,6 +127,13 @@ function reset() {
     Object.assign(state, structuredClone(INITIAL_STATE));
 }
 
+function checkInfinityOperation() {
+    const isInfinity = (state.firstMember.value === Infinity);
+    if (isInfinity) {
+        setStateSlot("operation", "don't do that!");
+    }
+}
+
 function getOperationText() {
     return state.operation.text
 }
@@ -135,5 +145,6 @@ export {
     forceOperationResolution, 
     tryToCalculate, 
     getOperationText, 
-    reset 
+    reset ,
+    checkInfinityOperation,
 };
