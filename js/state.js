@@ -90,8 +90,8 @@ function forceOperationResolution() {
 }
 
 function tryToCalculate() {
-    const isInfinity = (state.firstMember.value === Infinity);
     // if any calculation is tried base on infinity value: reset
+    const isInfinity = (state.firstMember.value === Infinity);
     if (isInfinity) reset();
     // if all members and the operator is set, compute intermediate result and update member
     if (state.firstMember.value !== null && state.secondMember.value !== null && state.operator.value !== null){
