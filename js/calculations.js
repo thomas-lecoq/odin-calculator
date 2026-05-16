@@ -16,8 +16,13 @@ function divide(a, b) {
     return a / b
 }
 
+function roundIfFloat(value) {
+    if (Number.isInteger(value)) return value;
+    return Math.round(value * 100) / 100;
+}
+
 function operate(operatorFunc, a, b) {
-    return operatorFunc(a, b)
+    return roundIfFloat(operatorFunc(a, b));
 }
 
 export { add, substract, multiply, divide, operate};
