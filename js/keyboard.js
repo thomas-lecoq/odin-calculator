@@ -1,7 +1,8 @@
 // logic related to keyboard management
 
 import { CALCULATOR_CNTR, SAMPLE_LIBRARY, DIGITS, OPERATORS } from "./config.js";
-import { setCurrentEntry, correctCurrentEntry, reset, setOperator, equal, tryToCalculate, stateStatus} from "./state.js";
+import { setCurrentEntry, correctCurrentEntry, reset, setOperator, equal, tryToCalculate} from "./state.js";
+import { updateDisplay } from "./display.js";
 
 function playSound(sampleKey) {
     const sampleReference = SAMPLE_LIBRARY[sampleKey];
@@ -41,8 +42,8 @@ function handleKeyPress(event) {
             reset();
             break;
     };
-    tryToCalculate()
-    stateStatus()
+    tryToCalculate();
+    updateDisplay();
 }
 
 export { handleKeyPress };

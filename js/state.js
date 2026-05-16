@@ -124,14 +124,16 @@ function reset() {
     Object.assign(state, structuredClone(INITIAL_STATE));
 }
 
-function stateStatus() {
-    console.log(
-        "current", state.currentEntry.value,
-        "firstMember", state.firstMember.value,
-        "secondMember", state.secondMember.value,
-        "operator", state.operator.text,
-        "operation", state.operation.text,
-    );
+function getOperationText() {
+    return state.operation.text
 }
 
-export { setCurrentEntry, correctCurrentEntry, setOperator, equal, tryToCalculate, stateStatus, reset };
+export { 
+    setCurrentEntry, 
+    correctCurrentEntry, 
+    setOperator, 
+    equal, 
+    tryToCalculate, 
+    getOperationText, 
+    reset 
+};
