@@ -1,6 +1,6 @@
 // logic related to keyboard management
 
-import { CALCULATOR_CNTR, SAMPLE_LIBRARY, DIGITS, OPERATORS } from "./config.js";
+import { SAMPLE_LIBRARY, DIGITS, OPERATORS } from "./config.js";
 import { setCurrentEntry, correctCurrentEntry, reset, setOperator, forceOperationResolution, tryToCalculate, checkInfinityOperation} from "./state.js";
 import { updateDisplay } from "./display.js";
 
