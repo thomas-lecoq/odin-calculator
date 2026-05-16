@@ -4,6 +4,11 @@ import { CALCULATOR_CNTR, SAMPLE_LIBRARY, DIGITS, OPERATORS } from "./config.js"
 import { setCurrentEntry, correctCurrentEntry, reset, setOperator, forceOperationResolution, tryToCalculate, checkInfinityOperation} from "./state.js";
 import { updateDisplay } from "./display.js";
 
+/**
+ * Play a sound from the sample library at its configured starting point.
+ * @param {string} sampleKey - Key of the sample in SAMPLE_LIBRARY.
+ * @returns {void}
+ */
 function playSound(sampleKey) {
     const sampleReference = SAMPLE_LIBRARY[sampleKey];
     const sound = sampleReference.sound;
@@ -11,6 +16,12 @@ function playSound(sampleKey) {
     sound.play();
 }
 
+/**
+ * Handle a click on the calculator: play feedback sound, dispatch the typed
+ * key to the matching state action, then recompute and refresh the display.
+ * @param {MouseEvent} event
+ * @returns {void}
+ */
 function handleKeyPress(event) {
     if (event.target.tagName !== "BUTTON") return;
     const typedKeyValue = event.target.dataset.value;

@@ -6,6 +6,16 @@ import { operate } from './calculations.js';
 // copy initial state, ready to update
 const state = structuredClone(INITIAL_STATE);
 
+/**
+ * Update one slot of the calculator state. Passing `null` clears the slot.
+ * - For numeric slots ("currentEntry", "firstMember", "secondMember"),
+ *   `value` is stored as a Number and `text` as the raw string.
+ * - For "operator", `slotValue` is an OPERATORS key.
+ * - For "operation", only the displayable `text` is stored.
+ * @param {"currentEntry"|"firstMember"|"secondMember"|"operator"|"operation"} slotName
+ * @param {string|number|null} slotValue
+ * @returns {void}
+ */
 function setStateSlot(slotName, slotValue) {
     const isSlotValueNull = (slotValue !== null);
     switch(slotName) {
@@ -24,6 +34,11 @@ function setStateSlot(slotName, slotValue) {
     };
 }
 
+/**
+ * Append a typed digit (or `.`) to the current entry, ignoring a second `.`.
+ * @param {string|number} typedKeyValue - Digit character or `.`.
+ * @returns {void}
+ */
 function setCurrentEntry(typedKeyValue) {
     const typedKeyText = String(typedKeyValue);
     // prevent multiple decimal points in the same number
@@ -34,11 +49,20 @@ function setCurrentEntry(typedKeyValue) {
     setOperation();
 }
 
+/**
+ * Remove the last character of the current entry (backspace).
+ * @returns {void}
+ */
 function correctCurrentEntry() {
     setStateSlot("currentEntry", state.currentEntry.text.slice(0, -1));
     setOperation();
 }
 
+/**
+ * Store a number into the first available member slot (first then second).
+ * @param {number|null} value
+ * @returns {void}
+ */
 function setMember(value) {
     if (state.firstMember.value === null) {
         setStateSlot("firstMember", value);
@@ -47,12 +71,22 @@ function setMember(value) {
     };
 }
 
+/**
+ * Move the current entry value into the next member slot and clear the entry.
+ * @returns {void}
+ */
 function shiftCurrentEntryToMember() {
     setMember(state.currentEntry.value);
     setStateSlot("currentEntry", null);
     setOperation();
 }
 
+/**
+ * Set the pending operator. Promotes the current entry to a member first,
+ * and resolves any pending chained operation before storing the new operator.
+ * @param {keyof typeof OPERATORS} operatorName
+ * @returns {void}
+ */
 function setOperator(operatorName) {
     // if a current entry is typed and we want to set the operator, first shift current entry to member
     if (state.currentEntry.value !== null) shiftCurrentEntryToMember();
@@ -66,6 +100,11 @@ function setOperator(operatorName) {
     setOperation();
 }
 
+/**
+ * Compute firstMember <op> secondMember, store the result back into
+ * firstMember, and clear the other slots.
+ * @returns {void}
+ */
 function resolvePendingOperation() {
     const firstMemberValue = state.firstMember.value;
     const secondMemberValue = state.secondMember.value;
@@ -81,6 +120,11 @@ function resolvePendingOperation() {
     setOperation();
 }
 
+/**
+ * Triggered by `=`: shift the current entry into a member so the operation
+ * is ready to be resolved by `tryToCalculate`.
+ * @returns {void}
+ */
 function forceOperationResolution() {
     // shift current entry so the three slots (firstMember, operator, secondMember) are ready for tryToCalculate
     if (state.currentEntry.value === null) return;
@@ -88,6 +132,11 @@ function forceOperationResolution() {
     shiftCurrentEntryToMember();
 }
 
+/**
+ * Resolve the pending operation if both members and the operator are set.
+ * Resets the state first if the previous result was Infinity.
+ * @returns {void}
+ */
 function tryToCalculate() {
     // if any calculation is tried base on infinity value: reset
     const isInfinity = (state.firstMember.value === Infinity);
@@ -101,6 +150,10 @@ function tryToCalculate() {
     };
 }
 
+/**
+ * Rebuild the displayable operation text from the current state slots.
+ * @returns {void}
+ */
 function setOperation() {
     let operationText;
     const isFirstMemberNull = (state.firstMember.value === null);
@@ -122,10 +175,19 @@ function setOperation() {
     setStateSlot("operation", operationText);
 }
 
+/**
+ * Reset the whole state to its initial values.
+ * @returns {void}
+ */
 function reset() {
     Object.assign(state, structuredClone(INITIAL_STATE));
 }
 
+/**
+ * Replace the operation display with a warning message when firstMember is
+ * Infinity (typically after a divide-by-zero).
+ * @returns {void}
+ */
 function checkInfinityOperation() {
     const isInfinity = (state.firstMember.value === Infinity);
     if (isInfinity) {
@@ -133,6 +195,10 @@ function checkInfinityOperation() {
     }
 }
 
+/**
+ * Get the current operation text to display on the calculator screen.
+ * @returns {string}
+ */
 function getOperationText() {
     return state.operation.text
 }
